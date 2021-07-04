@@ -4,6 +4,11 @@ import datetime as dt
 from .models import Image
 
 # Create your views here.
+
+#Function to display the welcome page
+def welcome (request):
+    return render ( request, 'welcome.html')
+    
 #Function to display photos that have been posted today.
 def todays_pics(request):
 
