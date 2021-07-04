@@ -8,7 +8,7 @@ from .models import Image
 #Function to display the welcome page
 def welcome (request):
     return render ( request, 'welcome.html')
-    
+
 #Function to display photos that have been posted today.
 def todays_pics(request):
 
@@ -32,3 +32,27 @@ def past_pics (request, past_date):
 
     return render(request, 'all-photos/past_pics.html', {"date": date})
     
+
+
+def search_results(request):
+
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images_by_category = Image.search_by_category(search_term)
+        searched_images_by_location = Image.search_by_location(search_term)
+        results = [*searched_images_by_category, *searched_images_by_location]
+        message = f"{search_term}"
+
+        return render(request, 'all-photos/search.html',{"message":message,"images": results})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-photos/search.html',{"message":message})
+
+def image(request):
+    images = Image.objects.all()
+    # try:
+    #     image = Image.objects.get(id = category_id)
+    # except DoesNotExist:
+    #     raise Http404()
+    return render(request,"all-photos/images.html", {"images":images})
