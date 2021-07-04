@@ -52,4 +52,23 @@ class Image (models.Model):
     class Meta:
         ordering = ['image_name']   
 
-    
+    @classmethod
+    def todays_pics(cls):
+        today = dt.date.today()
+        pics = cls.objects.filter(pub_date__date = today)
+        return pics
+
+    @classmethod
+    def days_pics(cls,date):
+        pics = cls.objects.filter(pub_date__date = date)
+        return pics
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        pics = cls.objects.filter(image_category__name__icontains=search_term)
+        return pics
+
+    @classmethod
+    def search_by_location(cls,search_term):
+        pics = cls.objects.filter(image_location__name__icontains=search_term)
+        return pics
