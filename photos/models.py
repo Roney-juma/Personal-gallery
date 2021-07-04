@@ -38,3 +38,18 @@ class Image (models.Model):
 
     def delete_image(self):
         self.delete()
+
+
+    @classmethod
+    def update_image(cls, image_id, **kwargs):
+        rows = 0
+        if kwargs is not None:
+            rows = cls.objects.filter(id = image_id).update(**kwargs)
+
+        return rows
+
+    
+    class Meta:
+        ordering = ['image_name']   
+
+    
