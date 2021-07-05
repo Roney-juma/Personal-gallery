@@ -1,5 +1,31 @@
-{%extends 'base.html'%}
 
-{% block content %}
-{{block.super}}
-{% endblock %}
+{%extends 'all-photos/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+   <div>
+      {% for pics_col in images %}
+
+      <div class="row">
+            <img src="{{pics_col.image.url}}" class="img-responsive" alt="Image" style="width: 200px; height: 150px;">
+      </div>
+
+      <div class="row">
+        <h1 class="">{{pics_col.image_name}}</h1>
+      </div>
+
+      <div class="row">
+        <p>{{pics_col.image}}</p>
+      </div>
+
+      <div>
+        <p>Posted {{pics_col.pub_date|timesince}}</p>
+      </div>
+   </div>
+
+
+
+ </div>
+
+ {% endblock %}
