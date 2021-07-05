@@ -15,7 +15,7 @@ def todays_pics(request):
     date = dt.date.today()
     pics = Image.todays_pics()
 
-    return render (request, 'all-photos/recent_pics.html',{"date":date, "pics":pics}) 
+    return render (request, 'all-photos/recent-photos.html',{"date":date, "pics":pics}) 
 
 #Function to redirect to photos posted in the past
 def past_pics (request, past_date):
@@ -51,8 +51,5 @@ def search_results(request):
 
 def image(request):
     images = Image.objects.all()
-    # try:
-    #     image = Image.objects.get(id = category_id)
-    # except DoesNotExist:
-    #     raise Http404()
-    return render(request,"all-photos/images.html", {"images":images})
+    
+    return render(request,"all-photos/image.html", {"images":images})
