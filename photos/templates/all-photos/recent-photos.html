@@ -10,11 +10,11 @@
   
     <div class="row">
       <!-- displaying Images name-->
-      <div class="col-md-12">
+      <div class="col-md-3">
         <h2 class="text-center"> {{ pic.image_name }} </h2>
-        <img id="myImg-{{pic.id}}" src="{{pic.image.url}}" onclick="displayModal(this)" class="img-responsive" alt= "image">
+        <img width="300" height="200" id="myImg-{{pic.id}}" src="{{pic.image.url}}" onclick="displayModal(this)" class="img-responsive" alt= "image">
         <p class="text-center">Posted on: {{ pic.pub_date}}</p>
-        <button id="{{pic.id}}" class="btn btn-primary" onclick="copyUrl(this)">Copy Image Link</button>
+        <button id="{{pic.id}}" class="btn btn-primary" onclick="copyUrl(this)">Copy Link</button>
       </div>
 
       <!-- The Modal -->
