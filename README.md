@@ -29,9 +29,9 @@ Or you can access the web application directly via this [LIVE LINK]().
 ## Technologies Used
 * HTML
 * Python 3
-* 
+* Psycopg2
 * CSS
-* 
+* Postgreql Database
 *****
 ### License
 This project is under:  
