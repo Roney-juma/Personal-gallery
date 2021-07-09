@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
@@ -22,7 +23,7 @@ class Location (models.Model):
 
 
 class Image (models.Model):
-    image = models.ImageField(upload_to = 'articles/', null=True)
+    image = CloudinaryField('image', null=True)
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length =200)
     image_location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
